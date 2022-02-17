@@ -1,8 +1,7 @@
-import Data from './Data'
+import Data from '../Data'
 import Card from './Card'
 
 const Main = () => {
-    console.log(Data[2])
     return(
         <>
             <div className="main">
@@ -16,6 +15,7 @@ const Main = () => {
                                     brand = {item.brand}
                                     price = {item.price}
                                     rating = {item.rating}
+                                    reviews = {item.reviews}
                                 />
                             );
                         })
