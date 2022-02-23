@@ -1,17 +1,20 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Rating from "./Rating";
+
 
 const Card = (props) => {
     const product = props;
-    console.log(product.reviews);
+    console.log(props);
+    console.log(props.id);
   return (
     <div className="card">
-      <a href="product.html">
+      <NavLink to={`/product/${props.id}`}>
         <img className="medium" src={props.img} alt={"product"} />
-      </a>
+      </NavLink>
       <div className="card-body">
-        <a href="product.html">
+        <NavLink to={`/product/${props.id}`}>
           <h2>{props.brand}</h2>
-        </a>
+        </NavLink>
 
         <Rating rating={props.rating} reviews={props.reviews}></Rating>
 
