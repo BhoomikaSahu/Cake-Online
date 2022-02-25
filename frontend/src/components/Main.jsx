@@ -12,10 +12,12 @@ const Main = () => {
                 key={item.id}
                 id={item.id}
                 img={item.img}
-                brand={item.brand}
+                name={item.name}
                 price={item.price}
                 rating={item.rating}
                 reviews={item.reviews}
+                description={item.description}
+                countInStock={item.countInStock}
               />
             );
           })}
@@ -34,7 +36,7 @@ export default Main;
 //         //     return(
 //                 <Card
 //                     key = {Data[0].id}
-//                     // brand = {Data[0].brand}
+//                     // name = {Data[0].name}
 //                     img = {Data[0].img}
 //                     // rating = {Data[0].rating}
 //                     // price = {Data[0].price}

@@ -10,6 +10,11 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#root{
+  height: 100%;
+}
+
+/* Layout */
 .grid_container{
   display: grid;
   grid-template-areas: 
@@ -33,6 +38,8 @@ footer{
   background-color: #203040;
   color: white;
 }
+
+/* Common */
 h1{
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -41,18 +48,22 @@ h2{
   font-size: 1.6rem;
   padding: 1rem 0;
 }
-.row{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
 a{
   text-decoration: none;
 }
 a:hover{
   color: #ff8000;
 }
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li{
+  margin-top: 1rem;
+}
+
+/* Header */
 header a{
   color: white;
   padding: 1rem;
@@ -62,9 +73,32 @@ a.brand{
   font-size: 3rem;
   font-weight: bold;
 }
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
 .row.center{
   justify-content: center;
 }
+.row.top{
+  align-items: flex-start;
+}
+.row.start{
+  justify-content: flex-start;
+}
+.col-1{
+  flex: 1 1 25rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
+.col-3{
+  flex: 32 1 75rem;
+}
+
+/* Image */
 img{
   border-radius: 0.5rem;
 }
@@ -72,6 +106,11 @@ img.medium{
   max-width: 29rem;
   width: 100%;
 }
+img.large{
+  width: 100%;
+}
+
+/* Card */
 .card{
   border: 0.1rem #c0c0c0 solid;
   background-color: #f8f8f8;
@@ -87,6 +126,7 @@ img.medium{
 .price{
   font-size: 2rem;
 }
+
 /* Rating */
 .rating span{
   color: #f0c040;
@@ -94,4 +134,12 @@ img.medium{
 }
 .rating span:last-child {
   color: #404040;
+}
+
+/* Alert */
+.success{
+  color: #20a020;
+}
+.danger{
+  color: #a02020;
 }

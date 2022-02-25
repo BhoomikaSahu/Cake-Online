@@ -3,9 +3,9 @@ import Rating from "./Rating";
 
 
 const Card = (props) => {
-    const product = props;
-    console.log(props);
-    console.log(props.id);
+    // const product = props;
+    // console.log(props);
+    // console.log(props.id);
   return (
     <div className="card">
       <NavLink to={`/product/${props.id}`}>
@@ -13,12 +13,12 @@ const Card = (props) => {
       </NavLink>
       <div className="card-body">
         <NavLink to={`/product/${props.id}`}>
-          <h2>{props.brand}</h2>
+          <h2>{props.name}</h2>
         </NavLink>
 
         <Rating rating={props.rating} reviews={props.reviews}></Rating>
 
-        <div className="price">{product.price}</div>
+        <div className="price">{`${props.price}/-`}</div>
       </div>
     </div>
   );
