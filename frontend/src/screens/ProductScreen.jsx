@@ -1,74 +1,117 @@
 import { Link, useParams } from "react-router-dom";
-import Data from "../Data";
+// import Data from "../Data";
 import Rating from "../components/Rating";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { useDispatch, useSelector } from "react-redux";
+import { detailsProduct } from "../actions";
 
-const Product = () => {
+const ProductScreen = () => {
   const { id } = useParams();
-  const product = Data.find((item) => item.id === Number(id));
-  // console.log(Data);
-  // console.log(product);
-  //   console.log(product.rating);
-  //   console.log(product.reviews);
+  const dispatch = useDispatch();
+  const productID = id;
 
-  if (!product) {
+  const productDetails = useSelector((state) => state.productDetails);
+  console.log('ProductDetails--- ', productDetails);
+  const { loading, product, error } = productDetails;
+  const productId = product;
+
+  useEffect(() => {
+    dispatch(detailsProduct(productID));
+  }, [dispatch, productID]);
+
+
+  // const [product, setProduct] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const { data } = await axios.get("/api/product");
+  //       setLoading(false);
+  //       setProduct(data);
+  //     } catch (err) {
+  //       // console.log("Bhoomika", error);
+  //       // console.log(err);
+  //       setError(err.message);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  // const { id } = useParams();
+  // const productId = product.find((item) => item.id === Number(id));
+
+  if (loading) {
+    return <LoadingBox />;
+  } else if (error) {
+    return <MessageBox variant="danger">{error}</MessageBox>;
+  } else if (!productId) {
     return <div>Product not found</div>;
   }
   return (
     <>
       <Header />
       <div>
-      <Link to="/">Back to result</Link>
-      <div className="row top">
-        <div className="col-2">
-          <img className="large" src={`../${product.img}`} alt={product.name} />
-        </div>
-        <div className="col-1">
-          <ul>
-            <li>
-              <h1>{product.name}</h1>
-            </li>
-            <li>
-              <Rating rating={product.rating} reviews={product.reviews} />
-            </li>
-            <li>Price: {`${product.price}/-`}</li>
-            <li>
-              Description:
-              <p>{product.description}</p>
-            </li>
-          </ul>
-        </div>
-
-        <div className="col-1">
-          <div className="card card-body">
+        <Link to="/">Back to result</Link>
+        <div className="row top">
+          <div className="col-2">
+            <img
+              className="large"
+              src={`../${productId.img}`}
+              alt={productId.name}
+            />
+          </div>
+          <div className="col-1">
             <ul>
-              <li>Seller </li>
               <li>
-                <div className="row">
-                  <div>Price</div>
-                  <div className="price">{`${product.price}/-`}</div>
-                </div>
+                <h1>{productId.name}</h1>
               </li>
               <li>
-                <div className="row">
-                  <div>Status</div>
-                  <div>
-                    {product.countInStock > 0 ? (
-                      <span className="success">In Stock</span>
-                    ) : (
-                      <span className="danger">Unavailable</span>
-                    )}
+                <Rating rating={productId.rating} reviews={productId.reviews} />
+              </li>
+              <li>Price: {`${productId.price}/-`}</li>
+              <li>
+                Description:
+                <p>{productId.description}</p>
+              </li>
+            </ul>
+          </div>
+
+          <div className="col-1">
+            <div className="card card-body">
+              <ul>
+                <li>Seller </li>
+                <li>
+                  <div className="row">
+                    <div>Price</div>
+                    <div className="price">{`${productId.price}/-`}</div>
                   </div>
-                </div>
-              </li>
-              {product.countInStock > 0 && (
-                <>
-                  <li>
+                </li>
+                <li>
+                  <div className="row">
+                    <div>Status</div>
                     <div>
-                      <div>Qty</div>
+                      {productId.countInStock > 0 ? (
+                        <span className="success">In Stock</span>
+                      ) : (
+                        <span className="danger">Unavailable</span>
+                      )}
+                    </div>
+                  </div>
+                </li>
+                {productId.countInStock > 0 && (
+                  <>
+                    <li>
                       <div>
-                        {/* <select
+                        <div>Qty</div>
+                        <div>
+                          {/* <select
                         value={qty}
                         onChange={(e) => setQty(e.target.value)}
                       >
@@ -78,19 +121,19 @@ const Product = () => {
                           </option>
                         ))}
                       </select> */}
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                </>
-              )}
-            </ul>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-      <Footer />
 
+      <Footer />
     </>
   );
 };
-export default Product;
+export default ProductScreen;

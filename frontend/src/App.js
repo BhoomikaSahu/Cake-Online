@@ -8,7 +8,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<HomeScreen/>} />
-          <Route path='product/:id' element={<ProductScreen />} />
+          <Route path='product/:id' element={<ProductScreen />} exact />
         </Routes>
       </Router>            
     </>
