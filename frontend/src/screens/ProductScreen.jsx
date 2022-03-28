@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-// import Data from "../Data";
 import Rating from "../components/Rating";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -9,56 +8,32 @@ import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsProduct } from "../actions";
 
-const ProductScreen = () => {
+const ProductScreen = (props) => {
+  const [qty, setQty] = useState(1);
   const { id } = useParams();
   const dispatch = useDispatch();
-  const productID = id;
-
   const productDetails = useSelector((state) => state.productDetails);
-  console.log('ProductDetails--- ', productDetails);
-  const { loading, product, error } = productDetails;
+  const { loading, error, product } = productDetails;
   const productId = product;
 
   useEffect(() => {
-    dispatch(detailsProduct(productID));
-  }, [dispatch, productID]);
+    dispatch(detailsProduct(id));
+  }, [dispatch, id]);
 
-
-  // const [product, setProduct] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(false);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const { data } = await axios.get("/api/product");
-  //       setLoading(false);
-  //       setProduct(data);
-  //     } catch (err) {
-  //       // console.log("Bhoomika", error);
-  //       // console.log(err);
-  //       setError(err.message);
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // const { id } = useParams();
-  // const productId = product.find((item) => item.id === Number(id));
-
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${id}?qty=${qty}`);
+  }
+console.log("ProductScreen", props);
   if (loading) {
     return <LoadingBox />;
   } else if (error) {
     return <MessageBox variant="danger">{error}</MessageBox>;
-  } else if (!productId) {
-    return <div>Product not found</div>;
   }
   return (
     <>
       <Header />
       <div>
-        <Link to="/">Back to result</Link>
+        <Link to="/"> Back to result </Link>
         <div className="row top">
           <div className="col-2">
             <img
@@ -108,21 +83,26 @@ const ProductScreen = () => {
                 {productId.countInStock > 0 && (
                   <>
                     <li>
-                      <div>
+                      <div className="row">
                         <div>Qty</div>
                         <div>
-                          {/* <select
-                        value={qty}
-                        onChange={(e) => setQty(e.target.value)}
-                      >
-                        {[...Array(product.countInStock).keys()].map((x) => (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        ))}
-                      </select> */}
+                          <select
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </div>
                       </div>
+                    </li>
+                    <li>
+                      <button onClick={addToCartHandler} className="primary block">Add to Cart</button>
                     </li>
                   </>
                 )}
