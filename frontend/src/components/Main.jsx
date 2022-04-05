@@ -4,7 +4,7 @@ import Card from "./Card";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions";
+import { listProducts } from "../actions/productActions";
 // import axios from "axios";
 
 const Main = () => {

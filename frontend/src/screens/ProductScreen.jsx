@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsProduct } from "../actions";
+import { detailsProduct } from "../actions/productActions";
 
 const ProductScreen = (props) => {
   const [qty, setQty] = useState(1);
@@ -22,8 +22,8 @@ const ProductScreen = (props) => {
 
   const addToCartHandler = () => {
     props.history.push(`/cart/${id}?qty=${qty}`);
-  }
-console.log("ProductScreen", props);
+  };
+  console.log("ProductScreen", props);
   if (loading) {
     return <LoadingBox />;
   } else if (error) {
@@ -102,7 +102,12 @@ console.log("ProductScreen", props);
                       </div>
                     </li>
                     <li>
-                      <button onClick={addToCartHandler} className="primary block">Add to Cart</button>
+                      <button
+                        onClick={addToCartHandler}
+                        className="primary block"
+                      >
+                        Add to Cart
+                      </button>
                     </li>
                   </>
                 )}

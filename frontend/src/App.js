@@ -1,13 +1,13 @@
 import "./index.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 import {
   BrowserRouter, //as Router,
   Routes,
   Route,
   Switch,
 } from "react-router-dom";
-import CartScreen from "./screens/CartScreen";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/cart/:id?" component={CartScreen}/>
-          <Route path="/" component={HomeScreen} exact/>
           <Route path="/product/:id" component={ProductScreen}/>
+          <Route path="/" component={HomeScreen} exact/>
         </Switch>
       </BrowserRouter>
     </> 
