@@ -5,18 +5,18 @@
   "description": "Ecommerce Website",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+    "start": "nodemon --watch backend --exec node --experimental-modules server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/bhoomikasahu/cake-online-repo.git"
+    "url": "git+ssh://git@github.com:BhoomikaSahuTFT/cake-online.git"
   },
   "author": "Bhoomika Sahu",
   "license": "ISC",
   "bugs": {
-    "url": "https://bitbucket.org/bhoomikasahu/cake-online-repo/issues"
+    "url": "https://github.com/BhoomikaSahuTFT/cake-online/issues"
   },
-  "homepage": "https://bitbucket.org/bhoomikasahu/cake-online-repo#readme",
+  "homepage": "https://github.com/BhoomikaSahuTFT/cake-online",
   "dependencies": {
     "express": "^4.17.3",
     "react-router-dom": "^6.2.2"

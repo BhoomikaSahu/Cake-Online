@@ -23,3 +23,7 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server at http://localhost:${port}`);
 });
+
+
+
+// "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
