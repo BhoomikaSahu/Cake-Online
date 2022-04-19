@@ -10,18 +10,18 @@ import { detailsProduct } from "../actions/productActions";
 
 const ProductScreen = (props) => {
   const [qty, setQty] = useState(1);
-  const { id } = useParams();
+  const { _id } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const productId = product;
 
   useEffect(() => {
-    dispatch(detailsProduct(id));
-  }, [dispatch, id]);
+    dispatch(detailsProduct(_id));
+  }, [dispatch, _id]);
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${id}?qty=${qty}`);
+    props.history.push(`/cart/${_id}?qty=${qty}`);
   };
   console.log("ProductScreen", props);
   if (loading) {

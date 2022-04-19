@@ -21,9 +21,9 @@ function App() {
 
       <BrowserRouter>
         <Switch>
+          <Route path="/" component={HomeScreen} exact/>
           <Route path="/cart/:id?" component={CartScreen}/>
           <Route path="/product/:id" component={ProductScreen}/>
-          <Route path="/" component={HomeScreen} exact/>
         </Switch>
       </BrowserRouter>
     </> 

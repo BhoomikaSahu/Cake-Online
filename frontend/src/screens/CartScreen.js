@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 const CartScreen = (props) => {
-  const productId = props.match.params.id;
+  const productId = props.match.params._id;
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
@@ -20,8 +20,8 @@ const CartScreen = (props) => {
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id));
+  const removeFromCartHandler = (_id) => {
+    dispatch(removeFromCart(_id));
   };
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");

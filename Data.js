@@ -1,7 +1,22 @@
+import bcrypt from 'bcrypt';
+
 const Data = {
+  users: [
+    {
+      name: "Bhoomika sahu",
+      email: "bhoomika@gmail.com",
+      password: bcrypt.hashSync("12345", 8),
+      isAdmin: false
+    },
+    {
+      name: "Reet",
+      email: "reet@gmail.com",
+      password: bcrypt.hashSync("12345", 8),
+      isAdmin: false
+    }
+  ],
   products: [
     {
-      id: 1,
       img: "./img/img1.jpeg",
       name: "Chocolate Cake",
       rating: "1",
@@ -11,9 +26,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 2,
       img: "./img/img2.jpeg",
-      name: "Chocolate Cake",
+      name: "Coffee Cake",
       rating: "2",
       reviews: 24,
       price: "1000",
@@ -21,9 +35,8 @@ const Data = {
       countInStock: 100,
     },
     {
-      id: 3,
       img: "./img/img3.jpeg",
-      name: "Chocolate Cake",
+      name: "Banana Cake",
       rating: "3",
       reviews: 23,
       price: "100",
@@ -31,9 +44,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 4,
       img: "./img/img4.jpeg",
-      name: "Chocolate Cake",
+      name: "Funfetti Cake",
       rating: "4",
       reviews: 5,
       price: "110",
@@ -41,9 +53,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 5,
       img: "./img/img5.jpeg",
-      name: "Chocolate Cake",
+      name: "Lemon Cake",
       rating: "2.5",
       reviews: 12,
       price: "100",
@@ -51,9 +62,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 6,
       img: "./img/img6.jpeg",
-      name: "Chocolate Cake",
+      name: "Black Forest Cake",
       rating: "3.5",
       reviews: 6,
       price: "100",
@@ -61,9 +71,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 7,
       img: "./img/img7.jpeg",
-      name: "Chocolate Cake",
+      name: "Cheese Cake",
       rating: "5",
       reviews: 10,
       price: "100",
@@ -71,9 +80,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 8,
       img: "./img/img8.jpeg",
-      name: "Chocolate Cake",
+      name: "Vanilla Cake",
       rating: "1.5",
       reviews: 9,
       price: "100",
@@ -81,9 +89,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 9,
       img: "./img/img9.jpeg",
-      name: "Chocolate Cake",
+      name: "Red Velvet Cake",
       rating: "1.5",
       reviews: 9,
       price: "100",
@@ -91,9 +98,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 10,
       img: "./img/img10.jpeg",
-      name: "Chocolate Cake",
+      name: "Mango Cake",
       rating: "1.5",
       reviews: 9,
       price: "100",
@@ -101,9 +107,8 @@ const Data = {
       countInStock: 10,
     },
     {
-      id: 11,
       img: "./img/img11.jpeg",
-      name: "Chocolate Cake",
+      name: "Sponge Cake",
       rating: "1.5",
       reviews: 9,
       price: "100",

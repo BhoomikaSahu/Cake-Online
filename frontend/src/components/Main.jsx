@@ -50,8 +50,8 @@ const Main = () => {
           {product.map((item) => {
             return (
               <Card
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                _id={item._id}
                 img={item.img}
                 name={item.name}
                 price={item.price}
@@ -76,7 +76,7 @@ export default Main;
 //         // Data.map((item) => {
 //         //     return(
 //                 <Card
-//                     key = {Data[0].id}
+//                     key = {Data[0]._id}
 //                     // name = {Data[0].name}
 //                     img = {Data[0].img}
 //                     // rating = {Data[0].rating}
