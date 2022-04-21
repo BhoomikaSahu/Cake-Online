@@ -7,7 +7,9 @@ import {
   Routes,
   Route,
   Switch,
+  Router,
 } from "react-router-dom";
+import SigninScreen from "./screens/SigninScreen";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route path="/" component={HomeScreen} exact/>
           <Route path="/cart/:id?" component={CartScreen}/>
           <Route path="/product/:id" component={ProductScreen}/>
+          <Route path="/signin" component={SigninScreen} exact/> 
         </Switch>
       </BrowserRouter>
     </> 
