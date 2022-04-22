@@ -6,13 +6,12 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 const CartScreen = (props) => {
-  const productId = props.match.params._id;
+  const productId = props.match.params.id;
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log("CartItems  ", cartItems, " CArt = ", cart);
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
