@@ -10,7 +10,7 @@ import { detailsProduct } from "../actions/productActions";
 
 const ProductScreen = (props) => {
   const [qty, setQty] = useState(1);
-  const { _id } = useParams();
+  const { id: _id } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -23,7 +23,7 @@ const ProductScreen = (props) => {
   const addToCartHandler = () => {
     props.history.push(`/cart/${_id}?qty=${qty}`);
   };
-  console.log("ProductScreen", props);
+  
   if (loading) {
     return <LoadingBox />;
   } else if (error) {
