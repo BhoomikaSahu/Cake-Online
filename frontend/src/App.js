@@ -10,6 +10,7 @@ import {
   Router,
 } from "react-router-dom";
 import SigninScreen from "./screens/SigninScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart/:id?" component={CartScreen}/>
           <Route path="/product/:id" component={ProductScreen}/>
           <Route path="/signin" component={SigninScreen} exact/> 
+          <Route path="/register" component={RegisterScreen} exact/> 
         </Switch>
       </BrowserRouter>
     </> 
