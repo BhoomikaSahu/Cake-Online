@@ -23,11 +23,23 @@ const ProductScreen = (props) => {
   const addToCartHandler = () => {
     props.history.push(`/cart/${_id}?qty=${qty}`);
   };
-  
+
   if (loading) {
-    return <LoadingBox />;
+    return (
+      <>
+        <Header />
+        <LoadingBox />
+        <Footer />
+      </>
+    );
   } else if (error) {
-    return <MessageBox variant="danger">{error}</MessageBox>;
+    return (
+      <>
+        <Header />
+        <MessageBox variant="danger">{error}</MessageBox>
+        <Footer />
+      </>
+    );
   }
   return (
     <>

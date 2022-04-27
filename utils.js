@@ -14,3 +14,9 @@ export const generateToken = (user) => {
     }
   );
 };
+
+// mongodb+srv://cakeonlineDB:<password>@cluster0.mmbqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority?
+
+// mongodb+srv://cakeonlineDB:<password>@cluster0.mmbqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+// mongodb+srv://cakeonlineDB:<password>@cluster0.mmbqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
