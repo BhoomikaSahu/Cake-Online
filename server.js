@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
   // process.env.DB_URL+process.env.DB_NAME+'?retryWrites=true&w=majority',
-  process.env.MONGODB_URL || "mongodb://localhost:27017/cake-online",
+  process.env.MONGODB_URL, //|| "mongodb://localhost:27017/cake-online",
   {
     // useCreateIndex: true,
     useNewUrlParser: true,
@@ -48,9 +48,9 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 
-// if (process.env.NODE_ENV == "production") {
-//   app.use(express.static("frontend/build"));
-// }
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("frontend/build"));
+}
 
 app.listen(port, () => {
   console.log(`Server at http://localhost:${port}`);
