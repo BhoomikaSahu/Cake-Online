@@ -78,7 +78,7 @@ const RegisterScreen = (props) => {
             />
           </div>
           <div>
-            <label htmlFor="confirmpassword">Password</label>
+            <label htmlFor="confirmpassword">Confirm Password</label>
             <input
               type="password"
               id="confirmpassword"

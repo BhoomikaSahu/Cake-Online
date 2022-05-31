@@ -11,6 +11,9 @@ import {
 } from "react-router-dom";
 import SigninScreen from "./screens/SigninScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
           <Route path="/cart/:id?" component={CartScreen}/>
           <Route path="/product/:id" component={ProductScreen}/>
           <Route path="/signin" component={SigninScreen} exact/> 
+          <Route path="/shipping" component={ShippingAddressScreen} exact />
+          <Route path="/payment" component={PaymentMethodScreen} exact />
+          <Route path="/placeorder" component={PlaceOrderScreen} exact />
           <Route path="/register" component={RegisterScreen} exact/> 
         </Switch>
       </BrowserRouter>
