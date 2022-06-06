@@ -15,7 +15,7 @@ const iState = {
     shippingAddress: localStorage.getItem("shippingAddress")
       ? JSON.parse(localStorage.getItem("shippingAddress"))
       : {},
-      paymentMethod: 'PayPal'
+    paymentMethod: "PayPal",
   },
 };
 
