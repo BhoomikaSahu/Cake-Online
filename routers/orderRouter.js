@@ -5,6 +5,15 @@ import { isAuth } from "../utils.js";
 
 const orderRouter = express.Router();
 
+orderRouter.get(
+  "/mine",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 orderRouter.post(
   "/",
   isAuth,
@@ -48,7 +57,7 @@ orderRouter.put(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
-    if(order){
+    if (order) {
       order.isPaid = true;
       order.paidAt = Date.now();
       order.paymentResult = {
@@ -58,9 +67,9 @@ orderRouter.put(
         email_address: req.body.email_address,
       };
       const updateOrder = await order.save();
-      res.send({message: 'Order Paid', order: updateOrder});
-    }else{
-      res.status(404).send({message: 'Order Not Found'});
+      res.send({ message: "Order Paid", order: updateOrder });
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
     }
   })
 );

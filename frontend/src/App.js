@@ -15,6 +15,7 @@ import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route path="/payment" component={PaymentMethodScreen} exact />
           <Route path="/placeorder" component={PlaceOrderScreen} exact />
           <Route path="/order/:id" component={OrderScreen} exact />
+          <Route path="/orderhistory" component={OrderHistoryScreen} exact />
+
         </Switch>
       </BrowserRouter>
     </> 
