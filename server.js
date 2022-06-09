@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
-  process.env.DB_URL+process.env.DB_NAME+'?retryWrites=true&w=majority',
+  // process.env.DB_URL+process.env.DB_NAME+'?retryWrites=true&w=majority',
   process.env.MONGODB_URL, //|| "mongodb://localhost:27017/cake-online",
   {
     // useCreateIndex: true,
