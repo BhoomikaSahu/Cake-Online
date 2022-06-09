@@ -11,11 +11,13 @@ import {
 } from "react-router-dom";
 import SigninScreen from "./screens/SigninScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import PrivateRoute from "./components/PrivateRoute";
 // import Switch from 'react-router/Switch'
 function App() {
   return (
@@ -29,20 +31,20 @@ function App() {
 
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={HomeScreen} exact/>
-          <Route path="/cart/:id?" component={CartScreen}/>
-          <Route path="/product/:id" component={ProductScreen}/>
-          <Route path="/signin" component={SigninScreen} exact/> 
-          <Route path="/register" component={RegisterScreen} exact/> 
+          <Route path="/" component={HomeScreen} exact />
+          <Route path="/cart/:id?" component={CartScreen} />
+          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/signin" component={SigninScreen} exact />
+          <Route path="/register" component={RegisterScreen} exact />
           <Route path="/shipping" component={ShippingAddressScreen} exact />
           <Route path="/payment" component={PaymentMethodScreen} exact />
           <Route path="/placeorder" component={PlaceOrderScreen} exact />
           <Route path="/order/:id" component={OrderScreen} exact />
           <Route path="/orderhistory" component={OrderHistoryScreen} exact />
-
+          <PrivateRoute path="/profile" component={ProfileScreen} exact />
         </Switch>
       </BrowserRouter>
-    </> 
+    </>
   );
 }
 
