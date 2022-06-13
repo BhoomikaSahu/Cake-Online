@@ -35,38 +35,42 @@ const Header = () => {
             </Link>
             <ul className="dropdown-content">
               <li>
-                <Link to='/profile'>User Profile</Link>
-                <Link to='/orderhistory'>Order History</Link>
+                <Link to="/profile">User Profile</Link>
               </li>
-              <Link to="#signout" onClick={signoutHandler}>
-                Sign Out
-              </Link>
+              <li>
+                <Link to="/orderhistory">Order History</Link>
+              </li>
+              <li>
+                <Link to="#signout" onClick={signoutHandler}>
+                  Sign Out
+                </Link>
+              </li>
             </ul>
           </div>
         ) : (
           <Link to="/signin">Sign In</Link>
         )}
-        {
-          userInfo && userInfo.isAdmin && (
-            <div className="dropdown">
-              <Link to='#admin'>Admin {' '} <i className="fa fa-caret-down"></i></Link>
-              <ul className="dropdown-content">
-                <li>
-                  <Link to='/dashboard'>Dashboard</Link>
-                </li>
-                <li>
-                  <Link to='/productlist'>Products</Link>
-                </li>
-                <li>
-                  <Link to='/orderlist'>Orders</Link>
-                </li>
-                <li>
-                  <Link to='/userlist'>Users</Link>
-                </li>
-              </ul>
-            </div>
-          )
-        }
+        {userInfo && userInfo.isAdmin && (
+          <div className="dropdown">
+            <Link to="#admin">
+              Admin <i className="fa fa-caret-down"></i>
+            </Link>
+            <ul className="dropdown-content">
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/productlist">Products</Link>
+              </li>
+              <li>
+                <Link to="/orderlist">Orders</Link>
+              </li>
+              <li>
+                <Link to="/userlist">Users</Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   );

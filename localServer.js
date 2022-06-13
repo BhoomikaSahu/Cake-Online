@@ -12,11 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
-  process.env.MONGODB_URL, 
+  process.env.MONGODB_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   }
 );
 
@@ -33,7 +32,7 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
@@ -41,3 +40,21 @@ app.listen(port, () => {
   console.log(`Server at http://localhost:${port}`);
 });
 
+// "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+
+// app.get("/api/products/:id", (req, res) => {
+//   const product = Data.products.find((product) => product.id === Number(req.params.id));
+//   if(product){
+//       res.send(product)
+//   }else{
+//       res.status(404).send({message: 'Product not found'});
+//   }
+// });
+
+// app.get("/api/products", (req, res) => {
+//   res.send(Data.products);
+// });
+
+// app.get("/", (req, res) => {
+//   res.send("Server is ready");
+// });
