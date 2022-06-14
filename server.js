@@ -11,6 +11,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("frontend/build"));
+}
 mongoose.connect(
   process.env.MONGODB_URL, 
   {
@@ -32,9 +35,6 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static("frontend/build"));
-}
 
 app.listen(port, () => {
   console.log(`Server at http://localhost:${port}`);
