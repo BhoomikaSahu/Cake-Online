@@ -187,6 +187,7 @@ img.large {
 /* Alert */
 .loading{
   display: block !important;
+  font-size: large;
 }
 .success {
   color: #20a020;

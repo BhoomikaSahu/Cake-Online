@@ -62,7 +62,7 @@ const OrderScreen = (props) => {
     <>
       <Header />
       <div>
-        <h1>Order {order._id}</h1>
+        <h1>Order Id: {order._id}</h1>
         <div className="row top">
           <div className="col-2">
             <ul>
