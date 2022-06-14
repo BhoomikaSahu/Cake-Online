@@ -13,7 +13,6 @@ const OrderHistoryScreen = (props) => {
   useEffect(() => {
     dispatch(listOrderMine());
   }, [dispatch])
-  console.log('orderMineList: ', orderMineList, orders);
   return (
     <>
     <Header/>
