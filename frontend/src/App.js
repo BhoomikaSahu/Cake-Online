@@ -8,6 +8,7 @@ import {
   Route,
   Switch,
   Router,
+  HashRouter,
 } from "react-router-dom";
 import SigninScreen from "./screens/SigninScreen";
 import RegisterScreen from "./screens/RegisterScreen";
@@ -29,7 +30,7 @@ function App() {
         </Routes>
       </Router>             */}
 
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/cart/:id?" component={CartScreen} />
@@ -43,7 +44,7 @@ function App() {
           <Route path="/orderhistory" component={OrderHistoryScreen} exact />
           <PrivateRoute path="/profile" component={ProfileScreen} exact />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
