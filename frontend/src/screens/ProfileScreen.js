@@ -28,7 +28,7 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!user) {
-      dispatch({type: USER_UPDATE_PROFILE_RESET})
+      dispatch({ type: USER_UPDATE_PROFILE_RESET });
       dispatch(detailsUser(userInfo._id));
     } else {
       setName(user.name);
@@ -46,7 +46,7 @@ const ProfileScreen = () => {
   };
   return (
     <>
-    <Header/>
+      <Header />
       <div>
         <form className="form" onSubmit={submitHandler}>
           <div>
@@ -58,15 +58,15 @@ const ProfileScreen = () => {
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
             <>
-            {
-              loadingUpdate && <LoadingBox></LoadingBox>
-            }
-            {
-              errorUpdate && <MessageBox variant='danger'>{errorUpdate}</MessageBox>
-            }
-            {
-              successUpdate && <MessageBox variant='success'>Profile Updated Successfully</MessageBox>
-            }
+              {loadingUpdate && <LoadingBox></LoadingBox>}
+              {errorUpdate && (
+                <MessageBox variant="danger">{errorUpdate}</MessageBox>
+              )}
+              {successUpdate && (
+                <MessageBox variant="success">
+                  Profile Updated Successfully
+                </MessageBox>
+              )}
               <div>
                 <label htmlFor="name">Name</label>
                 <input
@@ -111,11 +111,11 @@ const ProfileScreen = () => {
                   Update
                 </button>
               </div>
-              <Footer />
             </>
           )}
         </form>
       </div>
+      <Footer />
     </>
   );
 };
