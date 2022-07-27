@@ -3,7 +3,8 @@ import bcrypt from "bcrypt";
 import Data from "../Data.js";
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
-import { generateToken, isAuth } from "../utils.js";
+import Token from "../models/tokenModel.js";
+import { generateToken, isAuth, sendEmail } from "../utils.js";
 
 const userRouter = express.Router();
 
@@ -27,12 +28,42 @@ userRouter.post(
           name: user.name,
           email: user.email,
           isAdmin: user.isAdmin,
+          verified: user.verified,
           token: generateToken(user),
         });
-        return;
+        if(!user.verified){
+          let token = await Token.findOne({userId: user._id})
+          if(!token){
+            const token = new Token({
+              userId: user._id,
+              token: generateToken(user),
+            })      
+            const createdToken = await token.save();  
+            
+            const verificationURL = `${process.env.WEBSITE_URL}/api/user/${createdToken.userId}/verify/${createdToken.token}`;
+
+            await sendEmail(
+              user.email,
+              "Verify Email",
+              verificationURL,
+              user.name
+            ).catch(console.error);
+          }
+          else {
+            const verificationURL = `${process.env.WEBSITE_URL}/api/user/${token.userId}/verify/${token.token}`;
+
+            await sendEmail(
+              user.email,
+              "Verify Email",
+              verificationURL,
+              user.name
+            ).catch(console.error);
+
+          }
+        }
       }
     }
-    res.status(401).send({ message: "Invalid email or password" });
+    else res.status(401).send({ message: "Invalid email or password" });
   })
 );
 
@@ -50,8 +81,24 @@ userRouter.post(
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
+      verified: createdUser.verified,
       token: generateToken(createdUser),
     });
+
+    const token = new Token({
+      userId: createdUser._id,
+      token: generateToken(createdUser),
+    });
+    const createdToken = await token.save();
+
+    const verificationURL = `${process.env.WEBSITE_URL}/api/user/${createdToken.userId}/verify/${createdToken.token}`;
+
+    await sendEmail(
+      createdUser.email,
+      "Verify Email",
+      verificationURL,
+      createdUser.name
+    ).catch(console.error);
   })
 );
 
