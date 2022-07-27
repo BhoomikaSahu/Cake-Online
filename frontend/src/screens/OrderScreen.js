@@ -9,6 +9,8 @@ import Header from "../components/Header";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const OrderScreen = (props) => {
   const orderId = props.match.params.id;
@@ -23,13 +25,13 @@ const OrderScreen = (props) => {
     success: successPay,
   } = orderPay;
   const dispatch = useDispatch();
-
+  const PAYPAL_URL = "https://www.paypal.com/sdk/js?client-id=";
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data } = await Axios.get("/api/config/paypal");
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+      script.src = `${PAYPAL_URL}${data}`
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -111,7 +113,7 @@ const OrderScreen = (props) => {
                         <div className="row">
                           <div>
                             <img
-                              src={`../${item.img}`}
+                              src={item.imgUrl}
                               alt={item.name}
                               className="small"
                             />

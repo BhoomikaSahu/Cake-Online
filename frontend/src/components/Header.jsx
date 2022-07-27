@@ -28,7 +28,7 @@ const Header = () => {
             <span className="badge">{cartItems.length}</span>
           )}
         </Link>
-        {userInfo ? (
+        {userInfo && userInfo.verified ? (
           <div className="dropdown">
             <Link to="#">
               {userInfo.name} <i className="fa fa-caret-down"></i>
@@ -50,7 +50,7 @@ const Header = () => {
         ) : (
           <Link to="/signin">Sign In</Link>
         )}
-        {userInfo && userInfo.isAdmin && (
+        {userInfo && userInfo.verified && userInfo.isAdmin && (
           <div className="dropdown">
             <Link to="#admin">
               Admin <i className="fa fa-caret-down"></i>
@@ -62,12 +62,12 @@ const Header = () => {
               <li>
                 <Link to="/productlist">Products</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/orderlist">Orders</Link>
               </li>
               <li>
                 <Link to="/userlist">Users</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         )}

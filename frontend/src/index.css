@@ -60,7 +60,7 @@ ul {
   list-style-type: none;
 }
 li {
-  margin-top: 1rem;  
+  margin-top: 1rem;
 }
 input,
 select,
@@ -113,7 +113,6 @@ a.brand {
   font-size: 1.4rem;
   margin-left: 0.2rem;
 }
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -141,6 +140,9 @@ a.brand {
 .min-30 {
   min-width: 30rem;
 }
+.p-1 {
+  padding: 1rem;
+}
 
 /* Image */
 img {
@@ -155,6 +157,7 @@ img.medium {
   width: 100%;
 }
 img.large {
+  max-width: 60rem;
   width: 100%;
 }
 
@@ -185,7 +188,7 @@ img.large {
 }
 
 /* Alert */
-.loading{
+.loading {
   display: block !important;
   font-size: large;
 }
@@ -226,9 +229,18 @@ img.large {
 .form label {
   margin: 1rem 0;
 }
+.createProduct {
+  background-color: #ffffff;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  box-shadow: 1rem 1rem 1rem rgb(217, 213, 213);
+}
 
 /* Dropdown */
-.dropdown{
+.dropdown {
   display: inline-block;
   position: relative;
 }
@@ -244,7 +256,7 @@ img.large {
   margin-top: 0.4rem;
   border-radius: 0.5rem;
 }
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
@@ -266,14 +278,57 @@ img.large {
   width: 100%;
   border-collapse: collapse;
 }
-.table tbody tr:nth-of-type(odd){
+.table tbody tr:nth-of-type(odd) {
   background-color: #f4f4f4;
 }
-.table td, .table th{
+.table td,
+.table th {
   text-align: left;
   border: 0.1rem solid #e4e4e4;
   padding: 0.5rem;
 }
-.table button{
+.table button {
   margin: 0 0.2rem;
+}
+
+/* Dashboard */
+.summary > li {
+  border: 0.1rem #c0c0c0 solid;
+  margin: 2rem;
+  border-radius: 0.5rem;
+  flex: 1 1 20rem;
+}
+.summary-title {
+  font-size: 2rem;
+  padding: 1rem;
+}
+.summary-body {
+  font-size: 4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.summary-title.color1 {
+  background-color: #f0e0e0;
+}
+.summary-title.color2 {
+  background-color: #e0f0e0;
+}
+.summary-title.color3 {
+  background-color: #e0e0f0;
+}
+
+/* Pagination */
+.pagination a {
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pagination a.active {
+  font-weight: bold;
 }

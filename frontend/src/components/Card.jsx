@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import Rating from "./Rating";
 
-
 const Card = (props) => {
-    // const product = props;
-    // console.log(props);
-    // console.log(props._id);
   return (
     <div className="card">
       <NavLink to={`/product/${props._id}`}>
-        <img className="medium" src={props.img} alt={"product"} />
+        <img
+          className="medium"
+          src={props.imgUrl}
+          alt={props._id}
+        />
       </NavLink>
       <div className="card-body">
         <NavLink to={`/product/${props._id}`}>

@@ -1,13 +1,9 @@
 import "./index.css";
-import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import {
-  BrowserRouter, //as Router,
-  Routes,
   Route,
   Switch,
-  Router,
   HashRouter,
 } from "react-router-dom";
 import SigninScreen from "./screens/SigninScreen";
@@ -19,17 +15,13 @@ import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import PrivateRoute from "./components/PrivateRoute";
-// import Switch from 'react-router/Switch'
+import DashboardScreen from "./screens/DashboardScreen";
+import ProductListScreen from "./screens/ProductListScreen";
+import HomeScreen from "./screens/HomeScreen";
+
 function App() {
   return (
     <>
-      {/* <Router>
-        <Routes>
-          <Route path='/' element={<HomeScreen/>} />
-          <Route path='product/:id' element={<ProductScreen/>} exact />
-        </Routes>
-      </Router>             */}
-
       <HashRouter>
         <Switch>
           <Route path="/" component={HomeScreen} exact />
@@ -43,6 +35,8 @@ function App() {
           <Route path="/order/:id" component={OrderScreen} exact />
           <Route path="/orderhistory" component={OrderHistoryScreen} exact />
           <PrivateRoute path="/profile" component={ProfileScreen} exact />
+          <Route path="/dashboard" component={DashboardScreen} exact />
+          <Route path="/productlist" component={ProductListScreen} exact />
         </Switch>
       </HashRouter>
     </>
@@ -50,6 +44,3 @@ function App() {
 }
 
 export default App;
-
-// "react-router-dom": "^6.2.1",
-// "react-router-dom": "^5.3.0",

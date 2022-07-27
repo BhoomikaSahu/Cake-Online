@@ -6,8 +6,8 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { ORDER_CREATE_RESET } from "../constants/orderConstants";
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 
 const PlaceOrderScreen = (props) => {
   const cart = useSelector((state) => state.cart);
@@ -67,28 +67,32 @@ const PlaceOrderScreen = (props) => {
                 <div className="card card-bady">
                   <h2>Order Item</h2>
                   <ul>
-                    {cart.cartItems.map((item) => (
-                      <li key={item.product}>
-                        <div className="row">
-                          <div>
-                            <img
-                              src={`../${item.img}`}
-                              alt={item.name}
-                              className="small"
-                            />
-                          </div>
-                          <div className="min-30">
-                            <Link to={`/product/${item.product}`}>
-                              {item.name}
-                            </Link>
-                          </div>
-                          <div>
-                            {item.qty} x {item.price}/- ={" "}
-                            {item.qty * item.price}/-
-                          </div>
-                        </div>
-                      </li>
-                    ))}
+                    {cart.cartItems.map((item) => {
+                      return (
+                        <>
+                          <li key={item.product}>
+                            <div className="row">
+                              <div>
+                                <img
+                                  src={item.imgUrl}
+                                  alt={item.name}
+                                  className="small"
+                                />
+                              </div>
+                              <div className="min-30">
+                                <Link to={`/product/${item.product}`}>
+                                  {item.name}
+                                </Link>
+                              </div>
+                              <div>
+                                {item.qty} x {item.price}/- ={" "}
+                                {item.qty * item.price}/-
+                              </div>
+                            </div>
+                          </li>
+                        </>
+                      );
+                    })}
                   </ul>
                 </div>
               </li>
@@ -138,10 +142,8 @@ const PlaceOrderScreen = (props) => {
                     Place Order
                   </button>
                 </li>
-                {
-                  loading && <LoadingBox></LoadingBox>
-                }
-                {error && <MessageBox variant='danger'>{error}</MessageBox>}
+                {loading && <LoadingBox></LoadingBox>}
+                {error && <MessageBox variant="danger">{error}</MessageBox>}
               </ul>
             </div>
           </div>

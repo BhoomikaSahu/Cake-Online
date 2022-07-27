@@ -22,9 +22,13 @@ const CartScreen = (props) => {
   const removeFromCartHandler = (_id) => {
     dispatch(removeFromCart(_id));
   };
+  ///  <summary> Remove product from cart </summary>
+  ///        <param name="product ID"></param>
+
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
   };
+  ///  <summary> Redirect to Shipping Screen </summary>
 
   return (
     <>
@@ -38,47 +42,49 @@ const CartScreen = (props) => {
             </MessageBox>
           ) : (
             <ul>
-              {cartItems.map((item) => (
-                <li key={item.product}>
-                  <div className="row">
-                    <div>
-                      <img
-                        src={`../${item.img}`}
-                        alt={item.name}
-                        className="small"
-                      />
+              {cartItems.map((item) => {
+                return (
+                  <li key={item.product}>
+                    <div className="row">
+                      <div>
+                        <img
+                          src={item.imgUrl}
+                          alt={item.name}
+                          className="small"
+                        />
+                      </div>
+                      <div className="min-30">
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      </div>
+                      <div>
+                        <select
+                          value={item.qty}
+                          onChange={(e) =>
+                            dispatch(
+                              addToCart(item.product, Number(e.target.value))
+                            )
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>{item.price}/-</div>
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => removeFromCartHandler(item.product)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                    <div className="min-30">
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
-                    </div>
-                    <div>
-                      <select
-                        value={item.qty}
-                        onChange={(e) =>
-                          dispatch(
-                            addToCart(item.product, Number(e.target.value))
-                          )
-                        }
-                      >
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>{item.price}/-</div>
-                    <div>
-                      <button
-                        type="button"
-                        onClick={() => removeFromCartHandler(item.product)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>

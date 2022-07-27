@@ -5,8 +5,9 @@ import {
   orderDetailsReducer,
   orderMineListReducer,
   orderPayReducer,
+  orderSummaryReducer,
 } from "./orderReducers.js";
-import { productDetailsReducer, productListReducer } from "./productReducer.js";
+import { productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer } from "./productReducer.js";
 import {
   userDetailsReducer,
   userRegisterReducer,
@@ -25,7 +26,10 @@ const rootReducer = combineReducers({
   orderPay: orderPayReducer,
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
-  userUpdateProfile: userUpdateProfileReducer
+  userUpdateProfile: userUpdateProfileReducer,
+  orderSummary: orderSummaryReducer,
+  productCreate: productCreateReducer,
+  productDelete: productDeleteReducer,
 });
 
 export default rootReducer;

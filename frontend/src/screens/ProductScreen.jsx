@@ -14,8 +14,6 @@ const ProductScreen = (props) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-  const productId = product;
-
   useEffect(() => {
     dispatch(detailsProduct(_id));
   }, [dispatch, _id]);
@@ -23,7 +21,6 @@ const ProductScreen = (props) => {
   const addToCartHandler = () => {
     props.history.push(`/cart/${_id}?qty=${qty}`);
   };
-
   if (loading) {
     return (
       <>
@@ -41,6 +38,7 @@ const ProductScreen = (props) => {
       </>
     );
   }
+
   return (
     <>
       <Header />
@@ -48,24 +46,20 @@ const ProductScreen = (props) => {
         <Link to="/"> Back to result </Link>
         <div className="row top">
           <div className="col-2">
-            <img
-              className="large"
-              src={`../${productId.img}`}
-              alt={productId.name}
-            />
+            <img className="large" src={product.imgUrl} alt={product.name} />
           </div>
           <div className="col-1">
             <ul>
               <li>
-                <h1>{productId.name}</h1>
+                <h1>{product.name}</h1>
               </li>
               <li>
-                <Rating rating={productId.rating} reviews={productId.reviews} />
+                <Rating rating={product.rating} reviews={product.reviews} />
               </li>
-              <li>Price: {`${productId.price}/-`}</li>
+              <li>Price: {`${product.price}/-`}</li>
               <li>
                 Description:
-                <p>{productId.description}</p>
+                <p>{product.description}</p>
               </li>
             </ul>
           </div>
@@ -77,14 +71,14 @@ const ProductScreen = (props) => {
                 <li>
                   <div className="row">
                     <div>Price</div>
-                    <div className="price">{`${productId.price}/-`}</div>
+                    <div className="price">{`${product.price}/-`}</div>
                   </div>
                 </li>
                 <li>
                   <div className="row">
                     <div>Status</div>
                     <div>
-                      {productId.countInStock > 0 ? (
+                      {product.countInStock > 0 ? (
                         <span className="success">In Stock</span>
                       ) : (
                         <span className="danger">Unavailable</span>
@@ -92,7 +86,7 @@ const ProductScreen = (props) => {
                     </div>
                   </div>
                 </li>
-                {productId.countInStock > 0 && (
+                {product.countInStock > 0 && (
                   <>
                     <li>
                       <div className="row">

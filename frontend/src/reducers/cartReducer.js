@@ -21,7 +21,6 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       } else {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
-
     case CART_REMOVE_ITEM:
       return {
         ...state,
@@ -29,10 +28,10 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       };
     case CART_SAVE_SIPPING_ADDRESS:
       return { ...state, shippingAddress: action.payload };
-      case CART_SAVE_PAYMENT_METHOD: 
-        return {...state, paymentMethod: action.payload };
-      case CART_EMPTY:
-        return { ...state, cartItems: []};
+    case CART_SAVE_PAYMENT_METHOD:
+      return { ...state, paymentMethod: action.payload };
+    case CART_EMPTY:
+      return { ...state, cartItems: [] };
     default:
       return state;
   }
