@@ -4,7 +4,7 @@ import Data from "../Data.js";
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import Token from "../models/tokenModel.js";
-import { generateToken, isAuth, sendEmail } from "../backend/utils.js";
+import { generateToken, isAuth, sendEmail } from "../utils.js";
 
 const userRouter = express.Router();
 

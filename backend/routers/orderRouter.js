@@ -3,7 +3,7 @@ import expressAsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
-import { isAuth, isAdmin } from "../backend/utils.js";
+import { isAuth, isAdmin } from "../utils.js";
 import twilio from "twilio";
 
 const orderRouter = express.Router();
