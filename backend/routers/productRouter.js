@@ -2,7 +2,7 @@ import express from "express";
 import Data from "../Data.js";
 import expressAsyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
-import { isAuth, isAdmin, isSellerOrAdmin } from "../utils.js";
+import { isAuth, isAdmin, isSellerOrAdmin } from "../backend/utils.js";
 
 const productRouter = express.Router();
 
