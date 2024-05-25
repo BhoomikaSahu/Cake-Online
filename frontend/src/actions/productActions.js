@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
@@ -15,13 +14,14 @@ import {
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
+import axiosConfig from "../axiosConfig.js";
 
 export const listProducts = () => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await axios.get("/api/products");
+    const { data } = await axiosConfig.get("/api/products");
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -37,7 +37,7 @@ export const listProducts = () => async (dispatch) => {
 export const detailsProduct = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
   try {
-    const { data } = await axios.get(`/api/products/${productId}`);
+    const { data } = await axiosConfig.get(`/api/products/${productId}`);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
@@ -59,7 +59,7 @@ export const createProduct = ( name, imgUrl, rating, price, description, reviews
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.post(
+    const { data } = await axiosConfig.post(
       "/api/products",
       {name, imgUrl, rating, price, description, reviews, countInStock},
       {
@@ -84,7 +84,7 @@ export const deleteProduct = (productId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    await axios.delete(`/api/products/${productId}`, {
+    await axiosConfig.delete(`/api/products/${productId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: PRODUCT_DELETE_SUCCESS });

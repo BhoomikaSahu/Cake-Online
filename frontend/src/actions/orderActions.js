@@ -1,4 +1,3 @@
-import Axios from "axios";
 import { CART_EMPTY } from "../constants/cartConstants";
 import {
   ORDER_CREATE_FAIL,
@@ -16,6 +15,8 @@ import {
   ORDER_SUMMARY_REQUEST,
   ORDER_SUMMARY_SUCCESS,
 } from "../constants/orderConstants";
+import axiosConfig from "../axiosConfig.js";
+
 
 export const createOrder = (order) => async (dispatch, getState) => {
   dispatch({ type: ORDER_CREATE_REQUEST, payload: order });
@@ -23,7 +24,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     const {
       userSignin: { userInfo },
     } = getState();
-    const { data } = await Axios.post("/api/orders", order, {
+    const { data } = await axiosConfig.post("/api/orders", order, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -48,7 +49,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get(`/api/orders/${orderId}`, {
+    const { data } = await axiosConfig.get(`/api/orders/${orderId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -68,7 +69,7 @@ export const payOrder =
       userSignin: { userInfo },
     } = getState();
     try {
-      const { data } = Axios.put(
+      const { data } = axiosConfig.put(
         `/api/orders/${order._id}/pay`,
         paymentResult,
         {
@@ -91,7 +92,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get("api/orders/mine", {
+    const { data } = await axiosConfig.get("api/orders/mine", {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -112,7 +113,7 @@ export const summaryOrder = () => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get('/api/orders/summary', {
+    const { data } = await axiosConfig.get('/api/orders/summary', {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_SUMMARY_SUCCESS, payload: data });
